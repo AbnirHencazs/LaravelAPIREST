@@ -16,7 +16,14 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        //In order to keep the format defined on PostResource we invoke the method PostResource::collection
+        //The argument for the collection method may be a Query from a model
+        return PostResource::collection(Post::latest()->paginate());
+
+        /**
+         * You can also return the model collection without the format
+         * Post::latest()->paginate()
+         */
     }
 
     /**
